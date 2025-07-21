@@ -1,0 +1,17 @@
+﻿Churn Propensity Bucket,Score Range,ARPU,Loyalty Member,Suggested Offer
+ Very High,> 0.90 – 1.00,High (€50+),Yes,50% off for 12 months + free premium phone
+Very High,> 0.90 – 1.00,High,No,Free handset upgrade + 20% off for 6 months
+Very High,> 0.90 – 1.00,Low (<€50),Yes,Free Unlimited data for 12 months
+Very High,> 0.90 – 1.00,Low,No,€100 bill credit + enroll in Three+
+ High,> 0.80 – ≤ 0.90,High,Yes,25% off monthly bill for 6 months
+High,> 0.80 – ≤ 0.90,High,No,Free upgrade to next device tier + 10% off
+High,> 0.80 – ≤ 0.90,Low,Yes,Double your data for 6 months
+High,> 0.80 – ≤ 0.90,Low,No,Free Three+ membership + €50 voucher
+ Medium,0.50 – ≤ 0.80,High,Yes,Free 5GB/month extra for 12 months
+Medium,0.50 – ≤ 0.80,High,No,Free 3 months of international roaming pack
+Medium,0.50 – ≤ 0.80,Low,Yes,Upgrade to Unlimited plan at Essentials price
+Medium,0.50 – ≤ 0.80,Low,No,Join Three+ & get €50 bill credit
+Low,< 0.50,High,Yes,Home Broadband bundle at discounted rate
+Low,< 0.50,High,No,Encourage joining Three+ with free cinema tickets
+Low,< 0.50,Low,Yes,Recommend SIM‑only Unlimited plan at €15/month
+Low,< 0.50,Low,No,€10 off if they switch to Freedom 5G plan
