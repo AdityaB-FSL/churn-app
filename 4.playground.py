@@ -105,8 +105,6 @@ with row1_col1:
         plan_type = st.selectbox('Plan Type', ['Postpay', 'Prepay', 'SIM-only'], key="plan_type")
         plan_tier = st.selectbox('Plan Tier', ['Essentials', 'Freedom', 'Unlimited'], key="plan_tier")
         payment_method = st.selectbox('Payment Method', ['Credit Card', 'Debit Card', 'Direct Debit'], key="payment_method")
-
-with row1_col2:
     with st.expander("👤 User Profile", expanded=True):
         gender = st.selectbox('Gender', ['Female', 'Male', 'Other'], key="gender")
         region = st.selectbox('Region', ['Cork', 'Dublin', 'Galway', 'Other'], key="region")
@@ -114,11 +112,8 @@ with row1_col2:
         loyalty_member = st.selectbox('Loyalty Member?', ['Yes', 'No'], key="loyalty_member")
         tenure_days = st.slider('Tenure (Days)', round_down_5(slider_df['tenure_days'].min()), round_up_5(slider_df['tenure_days'].max()), int(slider_df['tenure_days'].mean()), key="tenure_days")
 
-
-
 # Second row: Engagement Metrics and Engagement Scores
-row2_col1, row2_col2 = st.columns(2)
-with row2_col1:
+with row1_col2:
     with st.expander("📊 Engagement Metrics", expanded=True):
         app_logins_per_month = st.slider('App Logins per Month', round_down_5(slider_df['app_logins_per_month'].min()), round_up_5(slider_df['app_logins_per_month'].max()), int(slider_df['app_logins_per_month'].mean()), key="app_logins_per_month")
         dropped_calls_last_month = st.slider('Dropped Calls Last Month', round_down_5(slider_df['dropped_calls_last_month'].min()), round_up_5(slider_df['dropped_calls_last_month'].max()), int(slider_df['dropped_calls_last_month'].mean()), key="dropped_calls_last_month")
@@ -133,8 +128,6 @@ with row2_col1:
         on_time_payments = st.selectbox('On Time Payments?', ['Yes', 'No'], key="on_time_payments")
         late_payments_6m = st.slider('Late Payments (6m)', round_down_5(slider_df['late_payments_6m'].min()), round_up_5(slider_df['late_payments_6m'].max()), int(slider_df['late_payments_6m'].mean()), key="late_payments_6m")
         outstanding_balance = st.slider('Outstanding Balance (€)', round_down_5f(slider_df['outstanding_balance_€'].min()), round_up_5f(slider_df['outstanding_balance_€'].max()), float(slider_df['outstanding_balance_€'].mean()), key="outstanding_balance")
-
-with row2_col2:
     with st.expander("📈 Engagement Scores", expanded=True):
         csat_score = st.slider('CSAT Score (1-5)', round_down_5(slider_df['csat_score'].min()), round_up_5(slider_df['csat_score'].max()), int(slider_df['csat_score'].mean()), key="csat_score")
         campaign_ctr = st.slider('Campaign CTR', round_down_5f(slider_df['campaign_ctr'].min()), round_up_5f(slider_df['campaign_ctr'].max()), float(slider_df['campaign_ctr'].mean()), 0.01, key="campaign_ctr")
