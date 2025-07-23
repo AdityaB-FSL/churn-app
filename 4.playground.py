@@ -66,11 +66,12 @@ def preprocess(user_input):
 
 # ========== Streamlit UI ==========
 
-
-
-st.title("🚀 Playground")
-st.markdown("Here you can predict whether a customer will churn based on their engagement, behavior, and subscription data.")
-
+col1, col2 = st.columns([5,1])
+with col1:
+    st.title("🚀 Playground")
+    st.markdown("Here you can predict whether a customer will churn based on their engagement, behavior, and subscription data.")
+with col2:
+    st.image("assets/logo.jpg",width=150)
 st.divider()
 
 st.subheader("📋 User Input Options")
