@@ -44,7 +44,7 @@ def prompt(feature_shap_importance: dict ,proba: int, customer_row):
                     - Feature Importances values adds up to 1, greater the value higher the feature is important in prediction.
                     - Recommendations should be strictly based on the information provided in the SHAP contributions and customer features.
 
-                Keep the report short and concise in 2-3 paragraphs.
+                Keep the report short and concise in 2-3 paragraphs (max 150 words in total).
                 Do not include any other text in the report.
                 Make sure the response is in markdown format with proper use only H3, H4, H5 and emojis.
             """
