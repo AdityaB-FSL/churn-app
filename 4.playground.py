@@ -22,7 +22,6 @@ def load_xgb_model():
 def preprocess(user_input):
     df = pd.DataFrame([user_input])
     df['auto_renewal'] = df['auto_renewal'].map({'Yes':1,'No':0})
-    df['subscription_status'] = df['subscription_status'].map({'Active':1,'Cancelled':0})
     df['roaming_last_3m'] = df['roaming_last_3m'].map({'Yes':1,'No':0})
     df['loyalty_member'] = df['loyalty_member'].map({'Yes':1,'No':0})
     df['on_time_payments'] = df['on_time_payments'].map({'Yes':1,'No':0})
