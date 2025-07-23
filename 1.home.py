@@ -6,11 +6,9 @@ def load_data():
     return pd.read_csv("data/data_with_churn_score.csv")
 
 df = load_data()
-col1, col2 = st.columns([6,1])
-with col1:
-    st.title("🏠 3Ireland Risk Tracking Home")
-with col2:
-    st.image("assets/logo.png",width=600)
+
+st.title("🏠 3Ireland Risk Tracking Home")
+
 st.divider()
 
 
