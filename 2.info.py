@@ -19,7 +19,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 llm = ChatOpenAI(
     openai_api_base="https://integrate.api.nvidia.com/v1",
     openai_api_key=NVIDIA_API_KEY,
-    model="nvidia/llama-3.1-nemotron-ultra-253b-v1"
+    model="qwen/qwen3-235b-a22b"
 )
 
 llm2 = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GOOGLE_API_KEY, temperature=0.1)
