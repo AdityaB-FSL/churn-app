@@ -68,12 +68,9 @@ def preprocess(user_input):
 
 
 
-col1, col2 = st.columns([6,1])
-with col1:
-    st.title("🚀 Playground")
-    st.markdown("Here you can predict whether a customer will churn based on their engagement, behavior, and subscription data.")
-with col2:
-    st.image("assets/logo.png",width=300)
+st.title("🚀 Playground")
+st.markdown("Here you can predict whether a customer will churn based on their engagement, behavior, and subscription data.")
+
 st.divider()
 
 st.subheader("📋 User Input Options")
@@ -223,5 +220,4 @@ if predict_button:
         waterfallgap=0.4
     )
     st.plotly_chart(fig_waterfall, use_container_width=True)
-
 
