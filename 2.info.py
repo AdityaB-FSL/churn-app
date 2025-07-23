@@ -13,6 +13,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 import os
 
+
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
@@ -43,7 +44,7 @@ def prompt(feature_shap_importance: dict ,proba: int, customer_row):
                     - Feature Importances values adds up to 1, greater the value higher the feature is important in prediction.
                     - Recommendations should be strictly based on the information provided in the SHAP contributions and customer features.
                 
-                Dont include any technical details like shap scores, churn probability, feature importance in report, only provide business context.    
+                Dont include any technical details like shap scores, probability, feature importance in report, only provide business context.    
                 Keep the report short and concise in 2-3 paragraphs (max 150 words in total).
                 Do not include any other text in the report.
                 Make sure the response is in markdown format with proper use only H3, H4, H5 and emojis.
@@ -141,7 +142,11 @@ else:
         st.write("Customer not found.")
     else:
         customer = customer_row.iloc[0]
-        st.title(f"🪪 Customer Profile for {customer['customer_id']}")    
+        col1, col2 = st.columns([5,1])
+        with col1:
+            st.title(f"🪪 Customer Profile for {customer['customer_id']}")    
+        with col2:
+            st.image("assets/logo.jpg",width=150)
         st.divider()
 
      # --- ML Prediction ---
