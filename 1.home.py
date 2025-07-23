@@ -15,9 +15,6 @@ with col2:
 st.divider()
 
 
-st.divider()
-
-
 # Dropdowns for filtering
 regions = ["All"] + sorted(df["region"].dropna().unique().tolist())
 customer_types = ["All"] + sorted(df["customer_type"].dropna().unique().tolist())
