@@ -61,7 +61,7 @@ You need to recommend the best offers for the customer.
 Here is the customer profile:{customer_row}
 Here is the list of offers csv:{offers}
 Give the output in markdown format with only Recommendation subheading , bullet points and emojis.
-Only provide the offer recommendation and not any other text.
+Only provide the top three offer recommendation and not any other text.
 """)
 
 parser = StrOutputParser()
