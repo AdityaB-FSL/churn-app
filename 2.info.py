@@ -32,18 +32,18 @@ def prompt(feature_shap_importance: dict ,proba: int, customer_row):
                     - Models Predicted Churn Probability: {proba}
                     - Customer Row: {customer_row}
                 Based on this information, explain to the agent in non-technical terms:
-                    1. Provide summary of who the customer is from user context features and his current status of action context features.
+                    1. Provide summary of who the customer is from user context features.
                     2. Identify the top 3 reasons for the customers potential churn. Provide a brief explanation of why these
-                    features significantly influence the churn prediction. Dont inclde any technical details like shap scores, provide business context.
+                    features significantly influence the churn prediction. 
                     3. Suggest the top 3 actions the agent can take to reduce the likelihood of churn, based on the feature impacts. Each suggestion should include:
                         - An explanation of why this action is expected to impact churn, based solely on the data provided.
-                        - Dont include any technical details like shap scores, provide business context.
                 Remember :
                     - The magnitude of a SHAP value indicates the strength of a feature's influence on the prediction.
                     - Positive SHAP values increase the likelihood of churn; negative values decrease it.
                     - Feature Importances values adds up to 1, greater the value higher the feature is important in prediction.
                     - Recommendations should be strictly based on the information provided in the SHAP contributions and customer features.
-
+                
+                Dont include any technical details like shap scores, probability, feature importance in report, only provide business context.    
                 Keep the report short and concise in 2-3 paragraphs (max 150 words in total).
                 Do not include any other text in the report.
                 Make sure the response is in markdown format with proper use only H3, H4, H5 and emojis.
