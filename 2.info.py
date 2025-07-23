@@ -213,7 +213,7 @@ else:
             with col1:
                 with st.spinner("Generating Report..."):
                     with st.container(border=True):
-                        chain = prompt | llm2 | parser
+                        chain = prompt | llm | parser
                         result = chain.invoke({"feature_shap_importance": escaped_feature_shap_importance, "proba": proba, "customer_row": customer_row})
                         st.markdown(f"{result}")
             with col2:
