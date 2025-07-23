@@ -14,11 +14,10 @@ def load_data():
 
 
 col1, col2 = st.columns([6,1])
-with col1:
-    st.title("📊 Dashboard for Churn Analysis")
-    st.write("This dashboard shows how each feature affects customer churn.")
-with col2:
-    st.image("assets/logo.png",width=300)
+
+st.title("📊 Dashboard for Churn Analysis")
+st.write("This dashboard shows how each feature affects customer churn.")
+
 st.divider()
 
 
