@@ -13,7 +13,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 import os
 
-
+from dotenv import load_dotenv
+load_dotenv()
 
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -26,18 +27,20 @@ llm = ChatOpenAI(
 
 llm2 = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GOOGLE_API_KEY, temperature=0.1)
 
-def prompt(feature_shap_importance: dict ,proba: int): 
+def prompt(feature_shap_importance: dict ,proba: int, customer_row): 
     system_message = f"""
                 YOU ARE AN MACHINE LEARNING MODEL EXPLAINABILITY EXPERT
                 Here are the details for a  is assisting:
                     - Dictioary of feature_name, shap_impact and feature_importance for xgboost machine learning model: {feature_shap_importance}
                     - Models Predicted Churn Probability: {proba}
+                    - Customer Row: {customer_row}
                 Based on this information, explain to the agent in non-technical terms:
-                    1. Provide summary of who the customer is froe user context features and his current status of action context features.
+                    1. Provide summary of who the customer is from user context features and his current status of action context features.
                     2. Identify the top 3 reasons for the customers potential churn. Provide a brief explanation of why these
-                    features significantly influence the churn prediction.
+                    features significantly influence the churn prediction. Dont inclde any technical details like shap scores, provide business context.
                     3. Suggest the top 3 actions the agent can take to reduce the likelihood of churn, based on the feature impacts. Each suggestion should include:
                         - An explanation of why this action is expected to impact churn, based solely on the data provided.
+                        - Dont include any technical details like shap scores, provide business context.
                 Remember :
                     - The magnitude of a SHAP value indicates the strength of a feature's influence on the prediction.
                     - Positive SHAP values increase the likelihood of churn; negative values decrease it.
@@ -60,7 +63,7 @@ You are given a customer profile and a list of offers.
 You need to recommend the best offers for the customer.
 Here is the customer profile:{customer_row}
 Here is the list of offers csv:{offers}
-Give the output in markdown format with only Recommendation subheadingand emojis.
+Give the output in markdown format with only Recommendation subheading , bullet points and emojis.
 Only provide the offer recommendation and not any other text.
 """)
 
@@ -141,11 +144,7 @@ else:
         st.write("Customer not found.")
     else:
         customer = customer_row.iloc[0]
-        col1, col2 = st.columns([6,1])
-        with col1:
-            st.title(f"🪪 Customer Profile for {customer['customer_id']}")
-        with col2:
-            st.image("assets/logo.png",width=100)        
+        st.title(f"🪪 Customer Profile for {customer['customer_id']}")    
         st.divider()
 
      # --- ML Prediction ---
@@ -179,7 +178,7 @@ else:
         }
 
         escaped_feature_shap_importance = escape_curly_braces(str(feature_shap_importance))
-        prompt_template = prompt(escaped_feature_shap_importance, proba)
+        prompt_template = prompt(escaped_feature_shap_importance, proba, customer_row)
         prompt = ChatPromptTemplate.from_messages([
                     ("system", prompt_template),
                     ("human", "")
@@ -218,7 +217,7 @@ else:
                 with st.spinner("Generating Report..."):
                     with st.container(border=True):
                         chain = prompt | llm | parser
-                        result = chain.invoke({"feature_shap_importance": escaped_feature_shap_importance, "proba": proba})
+                        result = chain.invoke({"feature_shap_importance": escaped_feature_shap_importance, "proba": proba, "customer_row": customer_row})
                         st.markdown(f"{result}")
             with col2:
                 with st.container(border=True):
